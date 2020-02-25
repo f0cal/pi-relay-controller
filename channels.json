@@ -13,20 +13,20 @@
             "name": "CCD"
         },
         {
-            "visible": false,
-            "active": "false",
+            "visible": true,
+            "active": "true",
             "channel": 3,
             "name": "Relay 3"
         },
         {
-            "visible": false,
-            "active": "false",
+            "visible": true,
+            "active": "true",
             "channel": 4,
             "name": "Relay 4"
         },
         {
-            "visible": false,
-            "active": "false",
+            "visible": true,
+            "active": "true",
             "channel": 5,
             "name": "Relay 5"
         },
