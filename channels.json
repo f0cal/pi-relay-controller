@@ -4,56 +4,183 @@
             "visible": true,
             "active": "true",
             "channel": 1,
+            "pin": 3,
             "name": "Relay 1"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 2,
+            "pin": 5,
             "name": "Relay 2"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 3,
+            "pin": 7,
             "name": "Relay 3"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 4,
+            "pin": 8,
             "name": "Relay 4"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 5,
+            "pin": 10,
             "name": "Relay 5"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 6,
+            "pin": 11,
             "name": "Relay 6"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 7,
+            "pin": 12,
             "name": "Relay 7"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 8,
+            "pin": 13,
             "name": "Relay 8"
         },
         {
             "visible": true,
             "active": "true",
             "channel": 9,
+            "pin": 15,
             "name": "Relay 9"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 10,
+            "pin": 16,
+            "name": "Relay 10"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 11,
+            "pin": 18,
+            "name": "Relay 11"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 12,
+            "pin": 19,
+            "name": "Relay 12"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 13,
+            "pin": 21,
+            "name": "Relay 13"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 14,
+            "pin": 22,
+            "name": "Relay 14"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 15,
+            "pin": 23,
+            "name": "Relay 15"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 16,
+            "pin": 24,
+            "name": "Relay 16"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 17,
+            "pin": 26,
+            "name": "Relay 17"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 18,
+            "pin": 29,
+            "name": "Relay 18"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 19,
+            "pin": 31,
+            "name": "Relay 19"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 20,
+            "pin": 32,
+            "name": "Relay 20"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 21,
+            "pin": 33,
+            "name": "Relay 21"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 22,
+            "pin": 35,
+            "name": "Relay 22"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 23,
+            "pin": 36,
+            "name": "Relay 23"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 24,
+            "pin": 37,
+            "name": "Relay 24"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 25,
+            "pin": 38,
+            "name": "Relay 25"
+        },
+        {
+            "visible": true,
+            "active": "true",
+            "channel": 26,
+            "pin": 40,
+            "name": "Relay 26"
         }
-
     ]
 }

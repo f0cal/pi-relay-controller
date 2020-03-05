@@ -16,9 +16,13 @@ from relay_lib import *
 error_msg = '{msg:"error"}'
 success_msg = '{msg:"success"}'
 
-# Update the following list/tuple with the port numbers assigned to your relay board
-PORTS = {1: 11, 2: 13, 3: 15, 4: 16, 5: 18, 6: 22, 7: 36, 8: 37, 9: 3}
-NUM_RELAY_PORTS = len(PORTS.keys())
+# Initialize these from channels.json
+PORTS = {}
+
+root_dir = '/home/pi/pi-relay-controller'
+with open('{}/channels.json'.format(root_dir)) as json_file:
+    channel_config = json.load(json_file)
+    PORTS = {ch['channel']: ch['pin'] for ch in channel_config['channels']}
 
 RELAY_NAME = 'AstroBox Relay Controller'
 
@@ -29,10 +33,6 @@ relay_control.relay_all_off()
 app = Flask(__name__)
 
 bootstrap = Bootstrap(app)
-
-root_dir = '/home/pi/pi-relay-controller'
-with open('{}/channels.json'.format(root_dir)) as json_file:
-    channel_config = json.load(json_file)
 
 @app.route('/')
 def index():
@@ -95,15 +95,10 @@ def api_all_relay_off():
 @app.route('/reboot/<int:relay>')
 def api_relay_reboot(relay, sleep_time=3):
     print("Executing api_relay_reboot:", relay)
-    if validate_relay(relay):
-        print("valid relay")
-        relay_control.relay_off(relay)
-        time.sleep(sleep_time)
-        relay_control.relay_on(relay)
-        return make_response(success_msg, 200)
-    else:
-        print("invalid relay")
-        return make_response(error_msg, 404)
+    relay_control.relay_off(relay)
+    time.sleep(sleep_time)
+    relay_control.relay_on(relay)
+    return make_response(success_msg, 200)
 
 
 @app.errorhandler(404)
@@ -118,12 +113,7 @@ def internal_server_error(e):
     return render_template('500.html', the_error=e), 500
 
 
-def validate_relay(relay):
-    # Make sure the port falls between 1 and NUM_RELAY_PORTS
-    return (relay > 0) and (relay <= NUM_RELAY_PORTS)
-
-
 if __name__ == "__main__":
     # On the Pi, you need to run the app using this command to make sure it
     # listens for requests outside of the device.
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=8080)
