@@ -17,14 +17,14 @@ error_msg = '{msg:"error"}'
 success_msg = '{msg:"success"}'
 
 # Update the following list/tuple with the port numbers assigned to your relay board
-PORTS = {1: 11, 2: 13, 3: 15, 4: 16, 5: 18, 6: 22, 7: 36, 8: 37}
+PORTS = {1: 11, 2: 13, 3: 15, 4: 16, 5: 18, 6: 22, 7: 36, 8: 37, 9: 3}
 NUM_RELAY_PORTS = len(PORTS.keys())
 
 RELAY_NAME = 'AstroBox Relay Controller'
 
 # initialize the relay library with the system's port configuration
-relay = RelayControl(PORTS)
-relay.relay_all_off()
+relay_control = RelayControl(PORTS)
+relay_control.relay_all_off()
 
 app = Flask(__name__)
 
@@ -42,7 +42,7 @@ def index():
 
 @app.route('/status/<int:relay>')
 def api_get_status(relay):
-    res = relay.relay_get_port_status(relay)
+    res = relay_control.relay_get_port_status(relay)
     if res:
         print("Relay is ON")
         return make_response("1", 200)
@@ -54,45 +54,42 @@ def api_get_status(relay):
 @app.route('/toggle/<int:relay>')
 def api_toggle_relay(relay):
     print("Executing api_relay_toggle:", relay)
-    relay.relay_toggle_port(relay)
+    relay_control.relay_toggle_port(relay)
     return make_response(success_msg, 200)
 
 
 @app.route('/on/<int:relay>')
 def api_relay_on(relay):
     print("Executing api_relay_on:", relay)
-    if validate_relay(relay):
-        print("valid relay")
-        relay.relay_on(relay)
-        return make_response(success_msg, 200)
-    else:
-        print("invalid relay")
-        return make_response(error_msg, 404)
+    relay_control.relay_on(relay)
+    return make_response(success_msg, 200)
 
 
 @app.route('/off/<int:relay>')
 def api_relay_off(relay):
     print("Executing api_relay_off:", relay)
-    if validate_relay(relay):
-        print("valid relay")
-        relay.relay_off(relay)
-        return make_response(success_msg, 200)
-    else:
-        print("invalid relay")
-        return make_response(error_msg, 404)
+    relay_control.relay_off(relay)
+    return make_response(success_msg, 200)
+
+
+@app.route('/all_toggle/')
+def api_relay_all_toggle():
+    print("Executing api_relay_all_toggle")
+    relay_control.relay_toggle_all_port()
+    return make_response(success_msg, 200)
 
 
 @app.route('/all_on/')
 def api_relay_all_on():
     print("Executing api_relay_all_on")
-    relay.relay_all_on()
+    relay_control.relay_all_on()
     return make_response(success_msg, 200)
 
 
 @app.route('/all_off/')
 def api_all_relay_off():
     print("Executing api_relay_all_off")
-    relay.relay_all_off()
+    relay_control.relay_all_off()
     return make_response(success_msg, 200)
 
 @app.route('/reboot/<int:relay>')
@@ -100,9 +97,9 @@ def api_relay_reboot(relay, sleep_time=3):
     print("Executing api_relay_reboot:", relay)
     if validate_relay(relay):
         print("valid relay")
-        relay.relay_off(relay)
+        relay_control.relay_off(relay)
         time.sleep(sleep_time)
-        relay.relay_on(relay)
+        relay_control.relay_on(relay)
         return make_response(success_msg, 200)
     else:
         print("invalid relay")

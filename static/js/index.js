@@ -1,5 +1,3 @@
-NUM_RELAY_PORTS = 8;
-
 function setRelay(relay, status) {
     console.log("Executing setRelay");
     callApiWithRelay(status + '/', relay);
@@ -12,17 +10,8 @@ function toggleRelay(relay) {
 
 function callApiWithRelay(url, relay) {
     console.log("Executing callApiWithRelay");
-    if (relay > 0 && relay < NUM_RELAY_PORTS + 1) {
-        url += relay;
-        callApi(url);
-    } else {
-        console.error("Invalid port");
-        swal({
-            title: "Pi Relay Controller",
-            text: "Invalid relay port passed to function setRelay",
-            type: "error"
-        });
-    }
+    url += relay;
+    callApi(url);
 }
 
 function setAll(status) {
@@ -33,9 +22,8 @@ function setAll(status) {
 
 function toggleAll() {
     console.log("Executing toggleAll");
-    for (var i = 1; i < NUM_RELAY_PORTS + 1; i++) {
-        toggleRelay(i);
-    }
+    var url = 'all_toggle/';
+    callApi(url);
 }
 
 function callApi(url) {
