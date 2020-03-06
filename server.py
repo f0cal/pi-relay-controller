@@ -24,7 +24,7 @@ with open('{}/channels.json'.format(root_dir)) as json_file:
     channel_config = json.load(json_file)
     PORTS = {ch['channel']: ch['pin'] for ch in channel_config['channels']}
 
-RELAY_NAME = 'AstroBox Relay Controller'
+RELAY_NAME = 'Generic Relay Controller'
 
 # initialize the relay library with the system's port configuration
 relay_control = RelayControl(PORTS)
