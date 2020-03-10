@@ -27,6 +27,7 @@ DELAY_TIME = 0.2
 class Relay:
     def __init__(self, port):
         GPIO.setup(port, GPIO.OUT)
+        GPIO.output(port, OFF_STATE)
         self._port = port
         self.status = OFF_STATE
 

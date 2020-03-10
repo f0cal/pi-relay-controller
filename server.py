@@ -28,7 +28,6 @@ RELAY_NAME = 'Generic Relay Controller'
 
 # initialize the relay library with the system's port configuration
 relay_control = RelayControl(PORTS)
-relay_control.relay_all_off()
 
 app = Flask(__name__)
 
