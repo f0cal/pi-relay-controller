@@ -12,22 +12,25 @@ from flask import render_template
 from flask_bootstrap import Bootstrap
 
 from relay_lib import *
+from digital_in_lib import *
 
 error_msg = '{msg:"error"}'
 success_msg = '{msg:"success"}'
 
 # Initialize these from channels.json
-PORTS = {}
+RELAY_PORTS = {}
 
 root_dir = '/home/pi/pi-relay-controller'
 with open('{}/channels.json'.format(root_dir)) as json_file:
     channel_config = json.load(json_file)
-    PORTS = {ch['channel']: ch['pin'] for ch in channel_config['channels']}
+    RELAY_PORTS = {ch['channel']: ch['pin'] for ch in channel_config['channels'] if ch['type'] == "relay"}
+    DIGITAL_IN_PORTS = [ch['pin'] for ch in channel_config['channels'] if ch['type'] == "digital-in"]
 
 RELAY_NAME = 'Generic Relay Controller'
 
 # initialize the relay library with the system's port configuration
-relay_control = RelayControl(PORTS)
+relay_control = RelayControl(RELAY_PORTS)
+digital_in_control = DigitalInControl(DIGITAL_IN_PORTS)
 
 app = Flask(__name__)
 
@@ -37,6 +40,17 @@ bootstrap = Bootstrap(app)
 def index():
     print("Loading app Main page")
     return render_template('index.html', relay_name=RELAY_NAME, channel_info=channel_config['channels'])
+
+
+@app.route('/state/<int:digital_in>')
+def api_get_state(digital_in):
+    res = digital_in_control.input_get_state(digital_in)
+    if res:
+        print("State is HIGH")
+        return make_response("1", 200)
+    else:
+        print("State is LOW")
+        return make_response("0", 200)
 
 
 @app.route('/status/<int:relay>')
