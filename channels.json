@@ -1,53 +1,184 @@
 {
     "channels": [
         {
+            "type": "relay",
             "visible": true,
             "active": "true",
-            "channel": 1,
-            "name": "Focus Controller"
-        },
-        {
-            "visible": true,
-            "active": "true",
-            "channel": 2,
-            "name": "CCD"
-        },
-        {
-            "visible": false,
-            "active": "false",
             "channel": 3,
-            "name": "Relay 3"
+            "pin": 3,
+            "name": "pin 3"
         },
         {
-            "visible": false,
-            "active": "false",
-            "channel": 4,
-            "name": "Relay 4"
-        },
-        {
-            "visible": false,
-            "active": "false",
-            "channel": 5,
-            "name": "Relay 5"
-        },
-        {
+            "type": "relay",
             "visible": true,
             "active": "true",
-            "channel": 6,
-            "name": "Mount"
+            "channel": 5,
+            "pin": 5,
+            "name": "pin 5"
         },
         {
+            "type": "relay",
             "visible": true,
             "active": "true",
             "channel": 7,
-            "name": "USB Power"
+            "pin": 7,
+            "name": "pin 7"
         },
         {
+            "type": "relay",
             "visible": true,
             "active": "true",
             "channel": 8,
-            "name": "Dew Controller"
+            "pin": 8,
+            "name": "pin 8"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 10,
+            "pin": 10,
+            "name": "pin 10"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 11,
+            "pin": 11,
+            "name": "pin 11"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 12,
+            "pin": 12,
+            "name": "pin 12"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 13,
+            "pin": 13,
+            "name": "pin 13"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 15,
+            "pin": 15,
+            "name": "pin 15"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 16,
+            "pin": 16,
+            "name": "pin 16"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 18,
+            "pin": 18,
+            "name": "pin 18"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 19,
+            "pin": 19,
+            "name": "pin 19"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 21,
+            "pin": 21,
+            "name": "pin 21"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 22,
+            "pin": 22,
+            "name": "pin 22"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 23,
+            "pin": 23,
+            "name": "pin 23"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 24,
+            "pin": 24,
+            "name": "pin 24"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 26,
+            "pin": 26,
+            "name": "pin 26"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 29,
+            "pin": 29,
+            "name": "pin 29"
+        },
+        {
+            "type": "relay",
+            "visible": true,
+            "active": "true",
+            "channel": 31,
+            "pin": 31,
+            "name": "pin 31"
+        },
+        {
+            "type": "digital-in",
+            "pin": 32
+        },
+        {
+            "type": "digital-in",
+            "pin": 33
+        },
+        {
+            "type": "digital-in",
+            "pin": 35
+        },
+        {
+            "type": "digital-in",
+            "pin": 36
+        },
+        {
+            "type": "digital-in",
+            "pin": 37
+        },
+        {
+            "type": "digital-in",
+            "pin": 38
+        },
+        {
+            "type": "digital-in",
+            "pin": 40
         }
-
     ]
 }
