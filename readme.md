@@ -97,3 +97,34 @@ Add the following lines to the end (bottom) of the file:
 To save your changes, press `ctrl-o` then press the Enter key. Next, press `ctrl-x` to exit the `nano` application.
 
 Reboot the Raspberry Pi; when it restarts, the python server process should execute in its own terminal window automatically.
+
+## Integration with Nginx
+
+Alternatively, the server can be run under Nginx with uWSGI.
+
+Check out the repo into /opt/controller/pi-relay-controller (or
+choose another location, but if you change the install directory
+you must update the uwsgi config files.)
+
+Install Nginx on the Raspberry Pi:
+
+        apt install nginx
+
+Copy the configuration files into place:
+
+        # copy the systemd unit file into place
+        cp etc/emperor.uwsgi.service /etc/systemd/system/
+
+        # copy the nginx server definition and remove the default
+        cp etc/controller /etc/nginx/sites-enabled/
+        rm /etc/nginx/sites-enabled/default
+
+        # copy the uwsgi configs
+        mkdir -p /etc/uwsgi/vassals
+        cp etc/emperor.ini /etc/uwsgi/
+        cp etc/uwsgi.ini /etc/uwsgi/vassals/
+
+        # reload the unit files
+        systemctl daemon-reload
+        systemctl enable --now emperor.uwsgi.service
+        systemctl enable --now nginx
