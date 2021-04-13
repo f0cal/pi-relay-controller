@@ -106,7 +106,13 @@ Install Nginx on the Raspberry Pi:
 
         apt install nginx
 
-Check out this repo into /opt/controller/pi-relay-controller.
+Create the installation directory:
+
+        sudo mkdir /opt/controller
+        sudo chown ${USER}:${USER} /opt/controller
+
+Check out this repo as /opt/controller/pi-relay-controller
+
 You can choose another location, but if you change the install
 directory you must update the uwsgi config files.
 
@@ -136,7 +142,7 @@ Copy the configuration files into place:
         cp etc/emperor.ini /etc/uwsgi/
         cp etc/uwsgi.ini /etc/uwsgi/vassals/
 
-        # add the server use to the gpio group
+        # add the webserver user to the gpio group
         usermod -aG gpio www-data
 
         # reload the unit files
