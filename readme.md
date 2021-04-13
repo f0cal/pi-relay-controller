@@ -124,12 +124,12 @@ files to point to its location.
         python3 -m venv /opt/controller/_venv
         source /opt/controller/_venv/bin/activate
         pip install --upgrade pip
-        pip install -r /opt/controller/py-relay-controller/requirements.txt
+        pip install -r /opt/controller/pi-relay-controller/requirements.txt
 
 Copy the configuration files into place:
 
         # copy the systemd unit file into place
-        cd /opt/controller/py-relay-controller
+        cd /opt/controller/pi-relay-controller
 
         cp etc/emperor.uwsgi.service /etc/systemd/system/
 
