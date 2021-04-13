@@ -102,17 +102,29 @@ Reboot the Raspberry Pi; when it restarts, the python server process should exec
 
 Alternatively, the server can be run under Nginx with uWSGI.
 
-Check out the repo into /opt/controller/pi-relay-controller (or
-choose another location, but if you change the install directory
-you must update the uwsgi config files.)
-
 Install Nginx on the Raspberry Pi:
 
         apt install nginx
 
+Check out this repo into /opt/controller/pi-relay-controller.
+You can choose another location, but if you change the install
+directory you must update the uwsgi config files.
+
+Create a virtual environment in /opt/controller/_venv, activate
+it, and install dependencies.  You must create the virtual
+environment in /opt/controller/_venv or edit the uwsgi config
+files to point to its location.
+
+        python3 -m venv /opt/controller/_venv
+        source /opt/controller/_venv/bin/activate
+        pip install --upgrade pip
+        pip install -r /opt/controller/py-relay-controller/requirements.txt
+
 Copy the configuration files into place:
 
         # copy the systemd unit file into place
+        cd /opt/controller/py-relay-controller
+
         cp etc/emperor.uwsgi.service /etc/systemd/system/
 
         # copy the nginx server definition and remove the default
@@ -123,6 +135,9 @@ Copy the configuration files into place:
         mkdir -p /etc/uwsgi/vassals
         cp etc/emperor.ini /etc/uwsgi/
         cp etc/uwsgi.ini /etc/uwsgi/vassals/
+
+        # add the server use to the gpio group
+        usermod -aG gpio www-data
 
         # reload the unit files
         systemctl daemon-reload
