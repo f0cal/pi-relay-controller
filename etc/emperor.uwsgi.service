@@ -1,0 +1,19 @@
+[Unit]
+Description=uWSGI Emperor
+After=syslog.target
+
+[Service]
+Environment=VIRTUAL_ENV=/opt/controller/_venv
+ExecStart=/opt/controller/_venv/bin/uwsgi --ini /etc/uwsgi/emperor.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=main
+RuntimeDirectory=uwsgi
+RuntimeDirectoryMode=700
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target

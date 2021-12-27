@@ -5,6 +5,7 @@ from __future__ import print_function
 import sys
 import time
 import json
+import os
 
 from flask import Flask
 from flask import make_response
@@ -20,7 +21,8 @@ success_msg = '{msg:"success"}'
 # Initialize these from channels.json
 RELAY_PORTS = {}
 
-root_dir = '/home/pi/pi-relay-controller'
+root_dir = os.environ['CONTROLLER_ROOT_DIR']
+
 with open('{}/channels.json'.format(root_dir)) as json_file:
     channel_config = json.load(json_file)
     RELAY_PORTS = {ch['channel']: ch['pin'] for ch in channel_config['channels'] if ch['type'] == "relay"}
